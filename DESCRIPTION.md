@@ -20,6 +20,6 @@
 - [x] Add page routes:
   - `/` — Full page with header and description
   - `/calculator` — Embeddable component (iframe-friendly)
-- [ ] Add unit tests
-- [ ] Add E2E tests
+- [x] Add unit tests
+- [x] Add E2E tests
 - [x] Add localization support (EN/ES)
