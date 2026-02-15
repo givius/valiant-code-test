@@ -1,0 +1,41 @@
+{
+    "app": {
+        "header": "LoanCalApp",
+        "name": "Valiant",
+        "title": "Calculadora de Préstamos",
+        "description": "Una calculadora de préstamos simple para cálculos rápidos y fáciles.",
+        "usage": "Ingresa el monto del préstamo, selecciona el propósito, elige el período de pago y especifica el plazo. La calculadora te mostrará el calendario de pagos y el total a pagar.",
+        "author": "Charles Ovando"
+    },
+    "calculator": {
+        "amount": "Necesito",
+        "purpose": "Para",
+        "repayment-period": "Pagado",
+        "term": "En",
+        "results": {
+            "period": "${amount} pagos {period}",
+            "total": "${total} total a pagar"
+        }
+    },
+    "loan": {
+        "purpose": {
+            "general": "Capital de trabajo",
+            "vehicle": "Vehículo o transporte",
+            "property": "Financiamiento de propiedad"
+        },
+        "repayment-period": {
+            "52": "Semanal",
+            "26": "Quincenal",
+            "12": "Mensual"
+        },
+        "term-month": {
+            "6": "6 meses",
+            "12": "12 meses",
+            "24": "2 años",
+            "36": "3 años",
+            "60": "5 años",
+            "120": "10 años",
+            "240": "20 años"
+        }
+    }
+}

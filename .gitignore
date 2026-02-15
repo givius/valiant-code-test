@@ -7,18 +7,42 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Nuxt build outputs
+.nuxt
+.output
 dist
-dist-ssr
+
+# Nitro
+.nitro
+
+# Local env files
 *.local
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+!.vscode/settings.json
+.idea/*
+!.idea/nuxt.xml
+!.idea/tailwindcss.xml
+!.idea/jsLibraryMappings.xml
+!.idea/.gitignore
+!.idea/modules.xml
+!.idea/vcs.xml
+!.idea/inspectionProfiles
+!.idea/*.iml
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Testing
+coverage

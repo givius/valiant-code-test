@@ -1,0 +1,41 @@
+{
+    "app": {
+        "header": "LoanCalApp",
+        "name": "Valiant",
+        "title": "Loan Repayment Calculator",
+        "description": "A simple loan repayment calculator for quick and easy loan calculations.",
+        "usage": "Enter the loan amount, select the purpose, choose the repayment period, and specify the term. The calculator will provide the repayment schedule and total repayments.",
+        "author": "Charles Ovando"
+    },
+    "calculator": {
+        "amount": "I need",
+        "purpose": "For",
+        "repayment-period": "Repaid",
+        "term": "Over",
+        "results": {
+            "period": "${amount} {period} repayments",
+            "total": "${total} total repayments"
+        }
+    },
+    "loan": {
+        "purpose": {
+            "general": "Day-to-day capital",
+            "vehicle": "Vehicle or transport",
+            "property": "Financing a property"
+        },
+        "repayment-period": {
+            "52": "Weekly",
+            "26": "Fortnightly",
+            "12": "Monthly"
+        },
+        "term-month": {
+            "6": "6 months",
+            "12": "12 months",
+            "24": "2 years",
+            "36": "3 years",
+            "60": "5 years",
+            "120": "10 years",
+            "240": "20 years"
+        }
+    }
+}

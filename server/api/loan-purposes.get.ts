@@ -1,0 +1,21 @@
+import type { LoanPurpose } from '~~/shared/types/loan'
+
+export default defineEventHandler((): LoanPurpose[] => {
+  return [
+    {
+      label: 'Day-to-day capital',
+      value: 'general',
+      annualRate: 0.1,
+    },
+    {
+      label: 'Vehicle or transport',
+      value: 'vehicle',
+      annualRate: 0.045,
+    },
+    {
+      label: 'Financing a property',
+      value: 'property',
+      annualRate: 0.029,
+    },
+  ]
+})

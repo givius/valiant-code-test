@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="NuxtConfigFileManager">
+    <option name="nuxtConfigPath" value="nuxt.config.ts" />
+  </component>
+  <component name="NuxtSettings">
+    <option name="nuxtVersion" value="4" />
+  </component>
+</project>
