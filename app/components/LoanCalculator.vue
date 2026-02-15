@@ -107,7 +107,9 @@ const strNumber = (value: number) => value.toLocaleString('en-US');
         <div class="flex flex-col gap-2">
             <i18n-t keypath="calculator.results.period" tag="h2" class="text-primary">
                 <template #amount>
-                    <b>{{ strNumber(periodAmount) }}</b>
+                    <b data-testid="period-amount">
+                        {{ strNumber(periodAmount) }}
+                    </b>
                 </template>
                 <template #period>
                     <b>{{ repaymentPeriodLabel }}</b>
@@ -115,7 +117,9 @@ const strNumber = (value: number) => value.toLocaleString('en-US');
             </i18n-t>
             <i18n-t keypath="calculator.results.total" tag="h4" class="text-muted">
                 <template #total>
-                    <b>{{ strNumber(totalAmount) }}</b>
+                    <b data-testid="total-amount">
+                        {{ strNumber(totalAmount) }}
+                    </b>
                 </template>
             </i18n-t>
         </div>
