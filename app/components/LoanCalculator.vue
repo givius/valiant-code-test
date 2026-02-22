@@ -7,12 +7,18 @@ import * as z from 'zod'
 
 const { loanPurposes, repaymentPeriods, termMonths, loading } = await useLoanData()
 
-// Form validation schema (amount: $100 - $5M)
+// Form validation schema (amount: $1,000 - $20M per spec)
 const schema = z.object({
-    amount: z.number().min(100).max(5_000_000),
-    purpose: z.string(),
-    repaymentPeriod: z.number(),
-    term: z.number(),
+    amount: z
+        .string()
+        .regex(/^\d+$/, 'Must contain only digits')
+        .transform(str => parseFloat(str))
+        .refine(val => val >= 1000 && val <= 20000000, {
+            message: 'Amount must be between $1,000 and $20,000,000',
+        }),
+    purpose: z.string().min(1, 'Purpose is required'),
+    repaymentPeriod: z.number().min(1, 'Repayment period is required'),
+    term: z.number().min(1, 'Term is required'),
 })
 type Schema = z.output<typeof schema>
 
@@ -44,7 +50,7 @@ watch(loading, () => {
 watch(state, (newState) => {
     const { amount, repaymentPeriod, term, purpose } = newState
     const annualRate = loanPurposes.value.find(loanPeriod => loanPeriod.value === purpose)?.annualRate ?? 0
-    const { period, total } = calculateLoanRepayments(amount || 0, term || 0, annualRate, repaymentPeriod || 0)
+    const { period, total } = calculateLoanRepayments(amount || '0', term || 0, annualRate, repaymentPeriod || 0)
 
     periodAmount.value = period
     totalAmount.value = total
@@ -75,8 +81,17 @@ const strNumber = (value: number) => value.toLocaleString('en-US');
                 <ValFieldInput
                     name="amount"
                     label="calculator.amount"
+                    type="text"
+                    :min="1000"
+                    :max="20000000"
                     icon="ph:currency-dollar"
-                    type="number"
+                    @keyup="(e: KeyboardEvent) => {
+                        // Allow only numbers and commas
+                        const cleanedValue = e.target?.value?.replace(/[^0-9.]/g, '')
+                        // Remove commas for parsing
+                        const numericValue = parseFloat(cleanedValue.replace(/,/g, ''))
+                        state.amount = isNaN(numericValue) ? 0 : cleanedValue
+                    }"
                 />
             </div>
             <div class="flex gap-2 items-center">
@@ -96,7 +111,7 @@ const strNumber = (value: number) => value.toLocaleString('en-US');
             <div class="flex gap-2 items-center">
                 <ValFieldSelect
                     name="term"
-                    label="calculator.repayment-period"
+                    label="calculator.term"
                     :options="termMonths"
                 />
             </div>
